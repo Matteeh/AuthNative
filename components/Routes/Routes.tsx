@@ -19,7 +19,7 @@ export function Routes(props: any) {
     });
   }, []);
 
-  const handelSignUp = async (email: string, password: string) => {
+  const handleSignUp = async (email: string, password: string) => {
     try {
       const token = await auth.signUp(email, password);
       await AsyncStorage.setItem("accessToken", token);
@@ -29,7 +29,7 @@ export function Routes(props: any) {
     }
   };
 
-  const handelSignIn = async (email: string, password: string) => {
+  const handleSignIn = async (email: string, password: string) => {
     try {
       const token = await auth.signIn(email, password);
       await AsyncStorage.setItem("accessToken", token);
@@ -41,8 +41,8 @@ export function Routes(props: any) {
 
   return (
     <View>
-      <Route path="/sign-up" onSignUpPress="handelSignUp" component={SignUp} />
-      <Route path="/sign-in" component={SignIn} />
+      <Route path="/sign-up" onSignUpPress={handleSignUp} component={SignUp} />
+      <Route path="/sign-in" onSignInPress={handleSignIn} component={SignIn} />
       <PrivateRoute
         path="/"
         isAuthenticated={tokenIsSet}
