@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Route, Redirect } from "react-router-native";
 
-export function PrivateRoute({ component: Component, ...rest }: any) {
-  const isAuthenticated = false;
+export function PrivateRoute({
+  isAuthenticated,
+  component: Component,
+  ...rest
+}: any) {
   return (
     <Route
       {...rest}
